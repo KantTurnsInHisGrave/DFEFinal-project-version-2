@@ -25,10 +25,9 @@ node {
         
     }
     
-    post {
-        always {
-            sh "cleanup.sh"
-        }
+    stage('Clean up') {
+        
+          sh "cleanup.sh"
     }
     
 }
