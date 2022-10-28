@@ -1,5 +1,12 @@
 node {
     def app
+    
+    stage('Cleanup') {
+        
+        sh "cleanup.sh" 
+        
+    }
+    
 
     stage('Clone repository') {
         
