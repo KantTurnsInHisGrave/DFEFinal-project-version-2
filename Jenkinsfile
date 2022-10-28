@@ -5,12 +5,9 @@ node {
     stage('Clone repository') {
         
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [[$class: 'CleanBeforeCheckout', deleteUntrackedNestedRepositories: true]], userRemoteConfigs: [[url: 'https://github.com/KantTurnsInHisGrave/DFEFinal-project-version-2.git']]])
+        
     }
     
-    stage('Cleanup') {
-        
-        sh "bash cleanup.sh"  
-    }
     
     stage('Setup docker') {
 
@@ -25,5 +22,13 @@ node {
     stage('Run container') {
         
         sh "bash run.sh"
+        
     }
+    
+    post {
+        always {
+            sh "cleanup.sh"
+        }
+    }
+    
 }
