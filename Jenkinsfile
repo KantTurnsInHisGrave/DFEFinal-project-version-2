@@ -27,11 +27,6 @@ node {
     }
   
 
-    stage('Clean up') {
-        
-        sh "bash cleanup.sh"
-        
-    }
     
 }
 
