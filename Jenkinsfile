@@ -42,7 +42,7 @@ node {
                         echo "Deleting image id: ${oldImageID}..."
                          sh "sudo docker rm -fr ${oldImageID}"
                     } else {
-                        echo "No image to delete..."
+                        echo "No image to delete.."
                         } 
                     }  
                 }  
