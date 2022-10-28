@@ -3,8 +3,7 @@ node {
     
     stage('Cleanup') {
         
-        sh "cleanup.sh" 
-        
+        sh "bash cleanup.sh"  
     }
     
 
