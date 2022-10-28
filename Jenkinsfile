@@ -8,7 +8,25 @@ node {
         
     }
     
-        stage('cleanup') {
+
+    
+    stage('Setup docker') {
+
+         sh "bash setup.sh"
+    }
+
+    stage('Build image') {
+        
+         sh "bash build.sh"
+    }  
+
+    stage('Run container') {
+        
+        sh "bash run.sh"
+        
+    }
+  
+    stage('cleanup') {
                 script { 
                     def imageName = "myapp"
                     env.imageName = "${imageName}"
@@ -27,23 +45,8 @@ node {
                         echo "No image to delete..."
                         } 
                     }  
-                }
+                }  
     
-    stage('Setup docker') {
-
-         sh "bash setup.sh"
-    }
-
-    stage('Build image') {
-        
-         sh "bash build.sh"
-    }  
-
-    stage('Run container') {
-        
-        sh "bash run.sh"
-        
-    }
     
 }
 
