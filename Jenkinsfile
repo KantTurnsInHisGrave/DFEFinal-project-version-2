@@ -45,9 +45,5 @@ node {
         
     }
     
-    stage('Clean up') {
-        
-          sh "cleanup.sh"
-    }   
 }
 
