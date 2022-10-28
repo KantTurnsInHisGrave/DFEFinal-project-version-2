@@ -22,7 +22,7 @@ node {
 
                     if ( "${oldImageID}" != '' ) {
                         echo "Deleting image id: ${oldImageID}..."
-                         sh "docker rmi -fr ${oldImageID}"
+                         sh "docker rmi -f ${oldImageID}"
                     } else {
                         echo "No image to delete..."
                         } 
