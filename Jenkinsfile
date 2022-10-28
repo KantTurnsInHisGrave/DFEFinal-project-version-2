@@ -26,27 +26,12 @@ node {
         
     }
   
-    stage('cleanup') {
-                script { 
-                    def imageName = "myapp"
-                    env.imageName = "${imageName}"
-                    def oldImageID = sh( 
-                                            script: 'docker images -qf reference=\${imageName}:\${imageTag}',
-                                            returnStdout: true
-                                        )
 
-                    echo "Image Name: " + "${imageName}"
-                    echo "Old Image: ${oldImageID}"
-
-                    if ( "${oldImageID}" != '' ) {
-                        echo "Deleting image id: ${oldImageID}..."
-                        sh "sudo docker stop ${oldImageID}; sudo docker rm -f ${oldImageID}; sudo docker rmi ${oldImageID}"
-                    } else {
-                        echo "No image to delete.."
-                        } 
-                    }  
-                }  
-    
+    stage('Clean up') {
+        
+        sh "bash cleanup.sh"
+        
+    }
     
 }
 
