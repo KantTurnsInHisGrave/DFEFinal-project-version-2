@@ -1,5 +1,3 @@
 #!/bin/bash
 
-cd /home/jenkins/.jenkins/workspace/DFE_Final_Project_Pipelinev2
-
-sudo docker stop myapp; sudo docker rm myapp; sudo docker rmi myapp
+docker ps -q --filter "name=myapp" | grep -q . && docker stop myapp && docker rm -fv myapp
